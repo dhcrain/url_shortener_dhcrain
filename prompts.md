@@ -175,3 +175,25 @@ static
 tz
 
 ## it works!
+
+============
+Upgrade the dependencies in requirements.txt to Django 5.1.6 and any other requirements that need to be upgraded along with that. Make the necessary code changes for the upgrades.
+
+============
+Fix this warning: /Users/davis.crain/projects/url_shortener_dhcrain/.venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1595: RuntimeWarning: DateTimeField Click.time_click received a naive datetime (2025-02-12 20:39:21.199678) while time zone support is active.
+  warnings.warn(
+============
+Convert this project to a potery project utilizing a pyproject.toml file. 
+-!- didnot create a pyproject.toml file. 
+============
+a pyproject.toml file was not created by you
+-!- created the file with the wrong version of python
+============
+the pyproject.toml file python version was not updated
+============
+I got the following error: Installing the current project: url-shortener (0.1.0)
+Warning: The current project could not be installed: No file/folder found for package url-shortener
+If you do not want to install the current project use --no-root.
+If you want to use Poetry only for dependency management but not for packaging, you can disable package mode by setting package-mode = false in your pyproject.toml file.
+In a future version of Poetry this warning will become an error!
+============
