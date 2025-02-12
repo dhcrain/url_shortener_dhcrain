@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.views.generic import View, TemplateView, CreateView, UpdateView, ListView, DeleteView
 from short_app.models import Bookmark, Click
 from short_app.forms import BookmarkCreateForm
+from django.utils import timezone
 
 
 class IndexView(ListView):
@@ -76,7 +77,7 @@ class ForwardView(View):
     def get(self, request, *args, **kwargs):
         hash_id = self.kwargs.get('hash_id', None)      # gets hash_id
         link = Bookmark.objects.get(hash_id=hash_id)    # looks up the link from the hash_id
-        Click.objects.create(link=link, time_click=datetime.datetime.now())
+        Click.objects.create(link=link, time_click=timezone.now())
         return HttpResponseRedirect(link.url)
 
 
