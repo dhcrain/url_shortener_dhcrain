@@ -1,7 +1,7 @@
 import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, Http404
 from django.views.generic import View, TemplateView, CreateView, UpdateView, ListView, DeleteView
@@ -16,7 +16,7 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             context["form"] = BookmarkCreateForm()
         return context
 
@@ -40,7 +40,7 @@ class ProfileView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             context["bookmark"] = Bookmark.objects.filter(user_id=self.request.user)
             context["form"] = BookmarkCreateForm()
         else:
