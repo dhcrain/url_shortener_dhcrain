@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "url-shortener"
+version = "0.1.0"
+description = "A URL shortener project"
+authors = ["Davis Crain"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+django = "5.1.6"
+django-crispy-forms = "1.14.0"
+djangorestframework = "3.14.0"
+djangorestframework-filters = "1.0.0.dev0"
+drfdocs = "0.0.11"
+gunicorn = "20.1.0"
+hashids = "1.3.1"
+psycopg2-binary = "2.9.3"
+whitenoise = "6.4.0"
+django-cors-headers = "3.14.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-django = "^4.10.0"
+pytest-cov = "^6.0.0"
+black = "^25.1.0"
+flake8 = "^7.1.1"
+isort = "^6.0.0"
+mypy = "^1.15.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

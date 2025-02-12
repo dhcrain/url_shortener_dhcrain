@@ -1,8 +1,10 @@
-from django.conf.urls import include, url
+from django.urls import include, re_path as url
 from rest_framework.authtoken import views
 
 from url_api.views import ClickAPIView, LinkListCreateAPIView, LinkRetrieveAPIView, LinkUrlRetrieveAPIView, \
     ClickRetrieveAPIView
+
+app_name = 'url_api'
 
 urlpatterns = [
     url(r'^clicks/$', ClickAPIView.as_view(), name='click-list'),

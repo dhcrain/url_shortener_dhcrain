@@ -1,12 +1,13 @@
 import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, Http404
 from django.views.generic import View, TemplateView, CreateView, UpdateView, ListView, DeleteView
 from short_app.models import Bookmark, Click
 from short_app.forms import BookmarkCreateForm
+from django.utils import timezone
 
 
 class IndexView(ListView):
@@ -16,7 +17,7 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             context["form"] = BookmarkCreateForm()
         return context
 
@@ -40,7 +41,7 @@ class ProfileView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             context["bookmark"] = Bookmark.objects.filter(user_id=self.request.user)
             context["form"] = BookmarkCreateForm()
         else:
@@ -76,7 +77,7 @@ class ForwardView(View):
     def get(self, request, *args, **kwargs):
         hash_id = self.kwargs.get('hash_id', None)      # gets hash_id
         link = Bookmark.objects.get(hash_id=hash_id)    # looks up the link from the hash_id
-        Click.objects.create(link=link, time_click=datetime.datetime.now())
+        Click.objects.create(link=link, time_click=timezone.now())
         return HttpResponseRedirect(link.url)
 
 

@@ -13,7 +13,7 @@ class Bookmark(models.Model):
     url = models.URLField()
     created = models.DateTimeField(auto_now_add=True)
     hash_id = models.CharField(max_length=10, null=True)
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["-created"]
@@ -28,7 +28,7 @@ class Bookmark(models.Model):
 
 
 class Click(models.Model):
-    link = models.ForeignKey(Bookmark)
+    link = models.ForeignKey(Bookmark, on_delete=models.CASCADE)
     time_click = models.DateTimeField()
 
     class Meta:
